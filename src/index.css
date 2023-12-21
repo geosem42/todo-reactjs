@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes highlight {
+  from { background-color: #90EE90; }
+  to { background-color: white; }
+}
+
+.highlight {
+  animation: highlight 2s forwards;
+}

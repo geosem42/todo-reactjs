@@ -6,7 +6,7 @@ function CheckboxItem({ task, onCheck }) {
         id={`checkbox-${task.id}`}
         name={`checkbox-${task.id}`}
         className="checkbox-item peer hidden"
-        checked={task.checked}
+        checked={task.selected}
         onChange={onCheck}
       />
       <label

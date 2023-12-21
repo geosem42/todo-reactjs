@@ -1,27 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CheckboxAll from "./partials/CheckboxAll";
 import CheckboxItem from "./partials/CheckboxItem";
+import { TrashIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
 
-function TaskList() {
-  const [tasks, setTasks] = useState([
-    { id: 1, title: "Refactor codebase", checked: false },
-    { id: 2, title: 'Write unit tests', checked: false },
-    { id: 3, title: "Fix bug in login flow", checked: false },
-    { id: 4, title: "Write documentation", checked: false },
-    { id: 5, title: "Implement new feature", checked: false },
-    { id: 6, title: "Review pull requests", checked: false },
-    { id: 7, title: "Optimize performance", checked: false },
-    { id: 8, title: "Improve UI/UX design", checked: false },
-    { id: 9, title: "Conduct code audit", checked: false },
-    { id: 10, title: "Prepare deployment", checked: false },
-  ]);
+function TaskList({ tasks, setTasks, highlightedId }) {
 
-  const handleCheck = (id) => {
-    const newTasks = tasks.map(task => task.id === id ? { ...task, checked: !task.checked } : task);
+  const handleSelect = (id) => {
+    const newTasks = tasks.map(task => task.id === id ? { ...task, selected: !task.selected } : task);
     setTasks(newTasks);
     
-    const checkedTask = newTasks.find(task => task.id === id);
-    console.log(`Task ${checkedTask.id}: ${checkedTask.title} checked status is now ${checkedTask.checked}`);
+    const selectedTask = newTasks.find(task => task.id === id);
+    console.log(`Task ${selectedTask.id}: ${selectedTask.title} selected status is now ${selectedTask.selected}`);
   };
 
   return (
@@ -38,17 +27,17 @@ function TaskList() {
         </thead>
         <tbody className="text-gray-600 divide-y">
           {tasks.map(task => (
-            <tr key={task.id} className="odd:bg-gray-50 even:bg-white">
+            <tr key={task.id} className={`odd:bg-gray-50 even:bg-white ${task.id === highlightedId ? 'highlight' : ''}`}>
             <td className="px-6 py-4 whitespace-nowrap flex items-center gap-x-4">
-              <CheckboxItem task={task} onCheck={() => handleCheck(task.id)} />
+                <CheckboxItem task={task} onCheck={() => handleSelect(task.id)} />
               {task.title}
             </td>
             <td className="text-right px-6 whitespace-nowrap">
-              <a href="#" className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg">
-                Edit
-              </a>
-              <button href="#" className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg">
-                Delete
+                <button className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-700 duration-150 hover:bg-indigo-50 rounded-lg">
+                  <PencilSquareIcon className="w-5 h-5" />
+                </button>
+              <button className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-700 duration-150 hover:bg-indigo-50 rounded-lg">
+                  <TrashIcon className="w-5 h-5" />
               </button>
             </td>
           </tr>

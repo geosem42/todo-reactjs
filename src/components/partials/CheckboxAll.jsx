@@ -1,12 +1,10 @@
-import { useState, useEffect } from "react";
-
 function CheckboxAll({ tasks, setTasks }) {
-  const isCheckedAll = tasks.every(task => task.checked);
+  const isSelectedAll = tasks.every(task => task.selected);
 
-  const handleCheckAll = () => {
-    setTasks(tasks.map(task => ({ ...task, checked: !isCheckedAll })));
-    
-    if (isCheckedAll) {
+  const handleSelectAll = () => {
+    setTasks(tasks.map(task => ({ ...task, selected: !isSelectedAll })));
+
+    if (isSelectedAll) {
       console.log(`All ${tasks.length} tasks unselected`);
     } else {
       console.log(`All ${tasks.length} tasks selected`);
@@ -19,8 +17,8 @@ function CheckboxAll({ tasks, setTasks }) {
         type="checkbox"
         id="checkbox-all-items"
         className="checkbox-item peer hidden"
-        checked={isCheckedAll}
-        onChange={handleCheckAll}
+        checked={isSelectedAll}
+        onChange={handleSelectAll}
       />
       <label
         htmlFor="checkbox-all-items"
