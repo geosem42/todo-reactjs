@@ -8,5 +8,14 @@
 }
 
 .highlight {
-  animation: highlight 2s forwards;
+  animation: highlight 1s forwards;
+}
+
+@keyframes deleted {
+  from { background-color: #ee9090; }
+  to { background-color: white; }
+}
+
+.deleted {
+  animation: deleted 1s forwards;
 }

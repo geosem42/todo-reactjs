@@ -18,11 +18,22 @@ function App() {
   ]);
 
   const [highlightedId, setHighlightedId] = useState(null);
+  const [deletedId, setDeletedId] = useState(null);
 
   return (
     <div className="max-w-screen-xl mx-auto mb-10 mt-10 px-4 md:px-8">
-      <Header tasks={tasks} setTasks={setTasks} setHighlightedId={setHighlightedId} />
-      <TaskList tasks={tasks} setTasks={setTasks} highlightedId={highlightedId} />
+      <Header
+        tasks={tasks}
+        setTasks={setTasks}
+        setHighlightedId={setHighlightedId}
+      />
+      <TaskList
+        tasks={tasks}
+        setTasks={setTasks}
+        highlightedId={highlightedId}
+        deletedId={deletedId}
+        setDeletedId={setDeletedId}
+      />
     </div>
   );
 }

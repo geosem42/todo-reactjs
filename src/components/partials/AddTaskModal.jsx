@@ -5,6 +5,7 @@ import { PlusCircleIcon } from '@heroicons/react/24/solid'
 export default function AddTaskModal({ tasks, setTasks, setHighlightedId }) {
   let [isOpen, setIsOpen] = useState(false)
   let [title, setTitle] = useState('')
+  let [isInputEmpty, setIsInputEmpty] = useState(false);
 
   function closeModal() {
     setIsOpen(false)
@@ -16,8 +17,13 @@ export default function AddTaskModal({ tasks, setTasks, setHighlightedId }) {
   }
 
   function addTask() {
-    const newId = tasks.length + 1;
-    setTasks(currentTasks => [{ id: newId, title, selected: false }, ...currentTasks]);
+    if (title === '') {
+      setIsInputEmpty(true);
+      return;
+    }
+
+    const newId = Math.max(...tasks.map(task => task.id)) + 1;
+    setTasks(currentTasks => [...currentTasks, { id: newId, title, selected: false }]);
     setHighlightedId(newId);
     closeModal()
   }
@@ -65,8 +71,12 @@ export default function AddTaskModal({ tasks, setTasks, setHighlightedId }) {
 
                   <div className="mt-4">
                     <input type="text" value={title}
-                            onChange={e => setTitle(e.target.value)}
-                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus-visible:outline-0 block w-full p-2.5" placeholder="Install Docker..." required />
+                            onChange={e => {
+                              setTitle(e.target.value.trim());
+                              setIsInputEmpty(e.target.value.trim() === '');
+                            }}
+                      className={`bg-gray-50 border ${isInputEmpty ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-indigo-500 focus:border-indigo-500'} text-gray-900 text-sm rounded-lg  focus-visible:outline-0 block w-full p-2.5`} placeholder="Install Docker..." />
+                    <p className={`mt-1 text-red-500 text-xs ${isInputEmpty ? '' : 'hidden'}`}>This field is required.</p>
                   </div>
 
                   <div className="flex justify-between mt-4">

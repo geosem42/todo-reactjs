@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import AddTaskModal from "./partials/AddTaskModal";
 
-function Header({ tasks, setTasks, setHighlightedId }) {
+function Header({ tasks, setTasks, setHighlightedId, setDeletedId }) {
   return (
     <div className="items-start justify-between md:flex">
       <div className="max-w-lg" id="header">
@@ -13,7 +13,12 @@ function Header({ tasks, setTasks, setHighlightedId }) {
         </p>
       </div>
       <div className="mt-3 md:mt-0">
-        <AddTaskModal tasks={tasks} setTasks={setTasks} setHighlightedId={setHighlightedId} />
+        <AddTaskModal
+          tasks={tasks}
+          setTasks={setTasks}
+          setHighlightedId={setHighlightedId}
+          setDeletedId={setDeletedId}
+        />
       </div>
     </div>
   );
