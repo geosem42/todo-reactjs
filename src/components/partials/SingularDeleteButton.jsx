@@ -2,7 +2,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { TrashIcon } from "@heroicons/react/24/outline";
 
-function SingularDeleteButton({ id, tasks, setTasks, setDeletedId }) {
+function SingularDeleteButton({ id, tasks, setTasks, setSelectedCount, setDeletedId }) {
   const MySwal = withReactContent(Swal);
 
   const handleDelete = () => {
@@ -22,6 +22,8 @@ function SingularDeleteButton({ id, tasks, setTasks, setDeletedId }) {
           setTasks(newTasks);
           console.log(`Task ${id} deleted`);
           setDeletedId(null);
+          const newSelectedCount = newTasks.filter(task => task.selected).length;
+          setSelectedCount(newSelectedCount);
         }, 400);
       }
     });

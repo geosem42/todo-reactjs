@@ -1,6 +1,4 @@
 import AddTaskModal from "./partials/AddTaskModal";
-import { TrashIcon } from "@heroicons/react/24/outline";
-import Swal from 'sweetalert2';
 import MassDeleteButton from "./partials/MassDeleteButton";
 
 function Header({ tasks, setTasks, setHighlightedId, setDeletedId, selectedCount, setSelectedCount }) {

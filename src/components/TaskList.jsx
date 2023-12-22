@@ -1,7 +1,7 @@
 import CheckboxAll from "./partials/CheckboxAll";
 import CheckboxItem from "./partials/CheckboxItem";
 import SingularDeleteButton from "./partials/SingularDeleteButton";
-import { PencilSquareIcon } from "@heroicons/react/24/outline";
+import { PencilSquareIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 
 function TaskList({ tasks, setTasks, highlightedId, deletedId, setDeletedId, setSelectedCount }) {
 
@@ -48,7 +48,13 @@ function TaskList({ tasks, setTasks, highlightedId, deletedId, setDeletedId, set
                   <button className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-700 duration-150 hover:bg-indigo-50 rounded-lg">
                     <PencilSquareIcon className="w-5 h-5" />
                   </button>
-                  <SingularDeleteButton id={task.id} tasks={tasks} setTasks={setTasks} setDeletedId={setDeletedId} />
+                    <SingularDeleteButton
+                      id={task.id}
+                      tasks={tasks}
+                      setTasks={setTasks}
+                      setDeletedId={setDeletedId}
+                      setSelectedCount={setSelectedCount}
+                    />
                 </td>
               </tr>
             ))}
