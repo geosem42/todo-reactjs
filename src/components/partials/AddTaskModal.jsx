@@ -72,7 +72,7 @@ export default function AddTaskModal({ tasks, setTasks, setHighlightedId }) {
                   <div className="mt-4">
                     <input type="text" value={title}
                             onChange={e => {
-                              setTitle(e.target.value.trim());
+                              setTitle(e.target.value);
                               setIsInputEmpty(e.target.value.trim() === '');
                             }}
                       className={`bg-gray-50 border ${isInputEmpty ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-indigo-500 focus:border-indigo-500'} text-gray-900 text-sm rounded-lg  focus-visible:outline-0 block w-full p-2.5`} placeholder="Install Docker..." />
