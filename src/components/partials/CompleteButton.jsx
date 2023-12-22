@@ -1,9 +1,16 @@
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 
-function CompleteButton({ id, tasks, setTasks }) {
+function CompleteButton({ id, tasks, setTasks, setSelectedCount }) {
   const handleComplete = () => {
-    const newTasks = tasks.map(task => task.id === id ? { ...task, completed: !task.completed } : task);
+    const newTasks = tasks.map(task =>
+      task.id === id
+        ? { ...task, completed: !task.completed, selected: task.completed ? task.selected : false }
+        : task
+    );
     setTasks(newTasks);
+
+    const newSelectedCount = newTasks.filter(task => task.selected).length;
+    setSelectedCount(newSelectedCount);
   }
 
   return (

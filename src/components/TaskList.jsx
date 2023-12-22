@@ -2,7 +2,6 @@ import CheckboxAll from "./partials/CheckboxAll";
 import CheckboxItem from "./partials/CheckboxItem";
 import SingularDeleteButton from "./partials/SingularDeleteButton";
 import CompleteButton from "./partials/CompleteButton";
-import { CheckCircleIcon } from "@heroicons/react/24/outline";
 
 function TaskList({ tasks, setTasks, highlightedId, deletedId, setDeletedId, setSelectedCount }) {
 
@@ -46,7 +45,12 @@ function TaskList({ tasks, setTasks, highlightedId, deletedId, setDeletedId, set
                   <span className={task.completed ? 'line-through' : ''}>{task.title}</span>
                 </td>
                 <td className="text-right px-6 whitespace-nowrap">
-                  <CompleteButton id={task.id} tasks={tasks} setTasks={setTasks} />
+                    <CompleteButton
+                      id={task.id}
+                      tasks={tasks}
+                      setTasks={setTasks}
+                      setSelectedCount={setSelectedCount}
+                    />
 
                   <SingularDeleteButton
                     id={task.id}

@@ -2,8 +2,11 @@ function CheckboxAll({ tasks, setTasks, setSelectedCount }) {
   const isSelectedAll = tasks.length > 0 && tasks.every(task => task.selected);
 
   const handleSelectAll = () => {
-    setTasks(tasks.map(task => ({ ...task, selected: !isSelectedAll })));
-    setSelectedCount(isSelectedAll ? 0 : tasks.length);
+    const newTasks = tasks.map(task => task.completed ? task : { ...task, selected: !isSelectedAll });
+    setTasks(newTasks);
+
+    const newSelectedCount = newTasks.filter(task => task.selected).length;
+    setSelectedCount(newSelectedCount);
 
     if (isSelectedAll) {
       console.log(`All ${tasks.length} tasks unselected`);
