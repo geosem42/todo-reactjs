@@ -19,6 +19,7 @@ function App() {
 
   const [highlightedId, setHighlightedId] = useState(null);
   const [deletedId, setDeletedId] = useState(null);
+  const [selectedCount, setSelectedCount] = useState(0);
 
   return (
     <div className="max-w-screen-xl mx-auto mb-10 mt-10 px-4 md:px-8">
@@ -26,6 +27,9 @@ function App() {
         tasks={tasks}
         setTasks={setTasks}
         setHighlightedId={setHighlightedId}
+        selectedCount={selectedCount}
+        setDeletedId={setDeletedId}
+        setSelectedCount={setSelectedCount}
       />
       <TaskList
         tasks={tasks}
@@ -33,6 +37,7 @@ function App() {
         highlightedId={highlightedId}
         deletedId={deletedId}
         setDeletedId={setDeletedId}
+        setSelectedCount={setSelectedCount}
       />
     </div>
   );

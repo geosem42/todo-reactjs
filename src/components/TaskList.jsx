@@ -1,11 +1,10 @@
-import { useState } from "react";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import CheckboxAll from "./partials/CheckboxAll";
 import CheckboxItem from "./partials/CheckboxItem";
 import { TrashIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
 
-function TaskList({ tasks, setTasks, highlightedId, deletedId, setDeletedId }) {
+function TaskList({ tasks, setTasks, highlightedId, deletedId, setDeletedId, setSelectedCount }) {
   const MySwal = withReactContent(Swal);
 
   const handleSelect = (id) => {
@@ -14,6 +13,9 @@ function TaskList({ tasks, setTasks, highlightedId, deletedId, setDeletedId }) {
 
     const selectedTask = newTasks.find(task => task.id === id);
     console.log(`Task ${selectedTask.id}: ${selectedTask.title} selected status is now ${selectedTask.selected}`);
+
+    const newSelectedCount = newTasks.filter(task => task.selected).length;
+    setSelectedCount(newSelectedCount);
   };
 
   const handleDelete = (id) => {
@@ -44,7 +46,11 @@ function TaskList({ tasks, setTasks, highlightedId, deletedId, setDeletedId }) {
         <thead className="text-gray-600 font-medium border-b">
           <tr>
             <th className="py-3 px-6 flex items-center gap-x-4">
-              <CheckboxAll tasks={tasks} setTasks={setTasks} />
+              <CheckboxAll
+                tasks={tasks}
+                setTasks={setTasks}
+                setSelectedCount={setSelectedCount}
+              />
               Tasks
             </th>
             <th className="py-3 px-6"></th>
