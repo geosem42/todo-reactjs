@@ -5,16 +5,16 @@ import TaskList from "./components/TaskList";
 function App() {
   
   const [tasks, setTasks] = useState([
-    { id: 1, title: "Refactor codebase", selected: false },
-    { id: 2, title: 'Write unit tests', selected: false },
-    { id: 3, title: "Fix bug in login flow", selected: false },
-    { id: 4, title: "Write documentation", selected: false },
-    { id: 5, title: "Implement new feature", selected: false },
-    { id: 6, title: "Review pull requests", selected: false },
-    { id: 7, title: "Optimize performance", selected: false },
-    { id: 8, title: "Improve UI/UX design", selected: false },
-    { id: 9, title: "Conduct code audit", selected: false },
-    { id: 10, title: "Prepare deployment", selected: false },
+    { id: 1, title: "Refactor codebase", selected: false, completed: false },
+    { id: 2, title: 'Write unit tests', selected: false, completed: false },
+    { id: 3, title: "Fix bug in login flow", selected: false, completed: false },
+    { id: 4, title: "Write documentation", selected: false, completed: false },
+    { id: 5, title: "Implement new feature", selected: false, completed: false },
+    { id: 6, title: "Review pull requests", selected: false, completed: false },
+    { id: 7, title: "Optimize performance", selected: false, completed: false },
+    { id: 8, title: "Improve UI/UX design", selected: false, completed: false },
+    { id: 9, title: "Conduct code audit", selected: false, completed: false },
+    { id: 10, title: "Prepare deployment", selected: false, completed: false },
   ]);
 
   const [highlightedId, setHighlightedId] = useState(null);

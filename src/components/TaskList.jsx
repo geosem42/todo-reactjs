@@ -1,7 +1,8 @@
 import CheckboxAll from "./partials/CheckboxAll";
 import CheckboxItem from "./partials/CheckboxItem";
 import SingularDeleteButton from "./partials/SingularDeleteButton";
-import { PencilSquareIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
+import CompleteButton from "./partials/CompleteButton";
+import { CheckCircleIcon } from "@heroicons/react/24/outline";
 
 function TaskList({ tasks, setTasks, highlightedId, deletedId, setDeletedId, setSelectedCount }) {
 
@@ -42,20 +43,18 @@ function TaskList({ tasks, setTasks, highlightedId, deletedId, setDeletedId, set
               <tr key={task.id} className={`odd:bg-gray-50 even:bg-white ${task.id === highlightedId ? 'highlight' : ''} ${task.id === deletedId ? 'deleted' : ''}`}>
                 <td className="px-6 py-4 whitespace-nowrap flex items-center gap-x-4">
                   <CheckboxItem task={task} onCheck={() => handleSelect(task.id)} />
-                  {task.title}
+                  <span className={task.completed ? 'line-through' : ''}>{task.title}</span>
                 </td>
                 <td className="text-right px-6 whitespace-nowrap">
-                  <button className="py-2 px-3 font-medium text-green-600 hover:text-green-700 hover:bg-green-50 active:bg-green-100 duration-150 rounded-lg">
-                    <CheckCircleIcon className="w-5 h-5" />
-                  </button>
+                  <CompleteButton id={task.id} tasks={tasks} setTasks={setTasks} />
 
-                    <SingularDeleteButton
-                      id={task.id}
-                      tasks={tasks}
-                      setTasks={setTasks}
-                      setDeletedId={setDeletedId}
-                      setSelectedCount={setSelectedCount}
-                    />
+                  <SingularDeleteButton
+                    id={task.id}
+                    tasks={tasks}
+                    setTasks={setTasks}
+                    setDeletedId={setDeletedId}
+                    setSelectedCount={setSelectedCount}
+                  />
                 </td>
               </tr>
             ))}

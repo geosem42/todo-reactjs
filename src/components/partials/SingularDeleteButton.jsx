@@ -6,9 +6,10 @@ function SingularDeleteButton({ id, tasks, setTasks, setSelectedCount, setDelete
   const MySwal = withReactContent(Swal);
 
   const handleDelete = () => {
+    const task = tasks.find(task => task.id === id);
     MySwal.fire({
       title: 'Are you sure?',
-      html: <p>You won't be able to revert this!</p>,
+      html: <p>Do you want to delete <span className="font-bold text-gray-700">{task.title}</span>?</p>,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#4338ca',
@@ -30,7 +31,14 @@ function SingularDeleteButton({ id, tasks, setTasks, setSelectedCount, setDelete
   }
 
   return (
-    <button onClick={handleDelete} className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-700 duration-150 hover:bg-indigo-50 rounded-lg">
+    <button onClick={handleDelete} 
+            disabled={tasks.some(task => task.id === id && task.completed)} 
+            className={`py-2 leading-none px-3 font-medium ${
+              tasks.some((task) => task.id === id && task.completed)
+                ? "text-gray-400"
+                : "text-red-600 hover:text-red-700 duration-150 hover:bg-red-50"
+            } rounded-lg`}
+    >
       <TrashIcon className="w-5 h-5" />
     </button>
   );

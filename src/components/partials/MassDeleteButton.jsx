@@ -13,7 +13,7 @@ function MassDeleteButton({ tasks, setTasks, setDeletedId, selectedCount, setSel
           if (selectedTasks.length > 0) {
             MySwal.fire({
               title: 'Are you sure?',
-              text: "You won't be able to revert this!",
+              html: `Do you want to delete these <span style="font-weight:bold">${selectedTasks.length}</span> tasks?`,
               icon: 'warning',
               showCancelButton: true,
               confirmButtonColor: '#4338ca',
@@ -38,7 +38,7 @@ function MassDeleteButton({ tasks, setTasks, setDeletedId, selectedCount, setSel
             })
           }
         }}
-        className="flex justify-between items-center ml-2 px-4 py-2 text-white duration-150 font-medium bg-red-700 rounded-lg hover:bg-red-800 active:bg-red-700 md:text-sm"
+        className="flex justify-between items-center mr-2 px-4 py-2 text-white duration-150 font-medium bg-red-700 rounded-lg hover:bg-red-800 active:bg-red-700 md:text-sm"
       >
         <span className="mr-2">{selectedCount} selected</span>
         <TrashIcon className="h-6 w-6 text-white" />
