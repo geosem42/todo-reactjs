@@ -10,6 +10,7 @@ export default function AddTaskModal({ tasks, setTasks, setHighlightedId }) {
   function closeModal() {
     setIsOpen(false)
     setTitle('')
+    setIsInputEmpty(false);
   }
 
   function openModal() {
@@ -17,7 +18,7 @@ export default function AddTaskModal({ tasks, setTasks, setHighlightedId }) {
   }
 
   function addTask() {
-    if (title === '') {
+    if (title.trim() === '') {
       setIsInputEmpty(true);
       return;
     }

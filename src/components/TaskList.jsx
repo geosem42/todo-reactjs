@@ -45,9 +45,10 @@ function TaskList({ tasks, setTasks, highlightedId, deletedId, setDeletedId, set
                   {task.title}
                 </td>
                 <td className="text-right px-6 whitespace-nowrap">
-                  <button className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-700 duration-150 hover:bg-indigo-50 rounded-lg">
-                    <PencilSquareIcon className="w-5 h-5" />
+                  <button className="py-2 px-3 font-medium text-green-600 hover:text-green-700 hover:bg-green-50 active:bg-green-100 duration-150 rounded-lg">
+                    <CheckCircleIcon className="w-5 h-5" />
                   </button>
+
                     <SingularDeleteButton
                       id={task.id}
                       tasks={tasks}
