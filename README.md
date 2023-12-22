@@ -12,6 +12,11 @@ This is a simple Todo list application built with React.js and Tailwind CSS.
 
 This application demonstrates a variety of functionalities including state management, conditional rendering, and interaction with user input.
 
+# Preview
+
+https://github.com/geosem42/todo-reactjs/assets/3442636/7e0e24a7-e550-47fe-80ed-e585cd460fee
+
+
 # Installation
 
 Install package
